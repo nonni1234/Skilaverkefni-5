@@ -139,8 +139,9 @@ while running:
     screen.fill((90,0,255))
 
     for ent in all_sprites: # renderar alla spriteana á skjáinn með blit methodinu
-        screen.blit(ent.surf, ent.rect)
-
+        if ent != player:
+            screen.blit(ent.surf, ent.rect)
+    screen.blit(player.surf,player.rect) # teiknar playerinn seinast svo hann sé ekki undir skýjunum
     # Check if any enemies have collided with the player
     if pygame.sprite.spritecollideany(player, enemies):
         # If so, then remove the player and stop the loop
